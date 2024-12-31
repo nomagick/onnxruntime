@@ -60,7 +60,8 @@ void ParseExecutionProviders(const Napi::Array epList, Ort::SessionOptions& sess
         arenaExtendStrategy = obj.Get("arenaExtendStrategy").As<Napi::Number>();
       }
       if (obj.Has("gpuMemLimit")) {
-        gpuMemLimit = static_cast<size_t>(obj.Get("gpuMemLimit").As<Napi::Number>().Uint32Value());
+        gpuMemLimit = static_cast<size_t>(
+            obj.Get("gpuMemLimit").As<Napi::Number>().DoubleValue());
       }
 #endif
 #ifdef USE_COREML
